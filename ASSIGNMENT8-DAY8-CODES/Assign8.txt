@@ -1,0 +1,135 @@
+Q1] Get Emails with specific time frame.
+
+{
+    "messages": [
+        {
+            "id": "195894aef40c751a",
+            "threadId": "1958909690564bd9"
+        },
+        {
+            "id": "1958947a7e450e09",
+            "threadId": "1958909690564bd9"
+        },
+        {
+            "id": "1958909690564bd9",
+            "threadId": "1958909690564bd9"
+        },
+        {
+            "id": "195853dd6e739d96",
+            "threadId": "195853dd6e739d96"
+        },
+        {
+            "id": "19583cf49a98081a",
+            "threadId": "19583cf49a98081a"
+        },
+        {
+            "id": "19583cbf306150b4",
+            "threadId": "19583cbf306150b4"
+        },
+        {
+            "id": "1957063d402c9ef9",
+            "threadId": "1957063d402c9ef9"
+        },
+        {
+            "id": "1956fe637a50143d",
+            "threadId": "1956fe637a50143d"
+        },
+        {
+            "id": "1956c80fd42aa50c",
+            "threadId": "1956c80fd42aa50c"
+        },
+        {
+            "id": "1956320a29ed59cf",
+            "threadId": "1956320a29ed59cf"
+        },
+        {
+            "id": "1955ded1d5de70dc",
+            "threadId": "1955ded1d5de70dc"
+        },
+        {
+            "id": "1954a9ae01ae6d0b",
+            "threadId": "1954a9ae01ae6d0b"
+        },
+        {
+            "id": "1954a67e98d5e9d4",
+            "threadId": "1954a67e98d5e9d4"
+        },
+        {
+            "id": "19548aec30998983",
+            "threadId": "19548aec30998983"
+        },
+        {
+            "id": "1954772243c510eb",
+            "threadId": "1954772243c510eb"
+        },
+        {
+            "id": "1954339d8a42c1f6",
+            "threadId": "1954339d8a42c1f6"
+        },
+        {
+            "id": "19540f947f98f4ba",
+            "threadId": "19540f947f98f4ba"
+        },
+        {
+            "id": "1953ecb239788ddb",
+            "threadId": "1953ecb239788ddb"
+        },
+        {
+            "id": "19501a600afcaab4",
+            "threadId": "19501a600afcaab4"
+        },
+        {
+            "id": "194fd900f2e36b8f",
+            "threadId": "194fd900f2e36b8f"
+        },
+        {
+            "id": "194fa3513ff5ffe0",
+            "threadId": "194fa3513ff5ffe0"
+        },
+        {
+            "id": "194f9d1b47aa2fc5",
+            "threadId": "194f9d1b47aa2fc5"
+        },
+        {
+            "id": "194dfe9f59a0d185",
+            "threadId": "194dfe9f59a0d185"
+        },
+        {
+            "id": "194da221be369730",
+            "threadId": "194da221be369730"
+        },
+        {
+            "id": "194b9085b0ac2e94",
+            "threadId": "194b9085b0ac2e94"
+        },
+        {
+            "id": "194b6b91bc50035e",
+            "threadId": "194b6b91bc50035e"
+        },
+        {
+            "id": "194b0eea7d3a9551",
+            "threadId": "194b0eea7d3a9551"
+        },
+        {
+            "id": "1944b0f104052baa",
+            "threadId": "1944b0f104052baa"
+        },
+        {
+            "id": "1944722d32a31669",
+            "threadId": "1944722d32a31669"
+        },
+        {
+            "id": "19430cdb81a46225",
+            "threadId": "19430cdb81a46225"
+        },
+        {
+            "id": "1942c09a11725d89",
+            "threadId": "1942c09a11725d89"
+        },
+        {
+            "id": "194267a413628045",
+            "threadId": "194267a413628045"
+        }
+    ],
+    "resultSizeEstimate": 32
+}
