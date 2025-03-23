@@ -28,6 +28,6 @@ INSERT INTO ordersss_date  VALUES
 
 SELECT order_id, order_date, total_amount
 FROM ordersss_date
-WHERE DATE(order_date) = '2025-03-16'  -- Specify the desired date here
+WHERE DATE(order_date) = '2025-03-16'  
 ORDER BY total_amount DESC;  -- Sort by total amount in descending order
 

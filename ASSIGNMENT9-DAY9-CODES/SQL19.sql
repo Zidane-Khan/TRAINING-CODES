@@ -23,3 +23,20 @@ CREATE TABLE order_items (
     FOREIGN KEY (order_id) REFERENCES orders_join(order_id),
     FOREIGN KEY (product_id) REFERENCES products_joins(product_id)
 );
+
+SELECT 
+    customers_joins.name AS customer_name,
+    orders_join.order_id,
+    orders_join.order_date,
+    products_joins.product_name,
+    order_items.quantity,
+    products_joins.price,
+    (order_items.quantity * products_joins.price) AS total_price
+FROM 
+    customers_joins
+INNER JOIN 
+    orders_join ON customers_joins.customer_id = orders_join.customer_id
+INNER JOIN 
+    order_items ON orders_join.order_id = order_items.order_id
+INNER JOIN 
+    products_joins ON order_items.product_id = products_joins.product_id;
