@@ -24,7 +24,7 @@ print(output)
 # a. Example Input: "abcabcbb"
 #  Expected Output: 3 (The longest substring is "abc")
 
-S="abcabcbb"
+S="kartik"
 S1=list(S)
 S2=[]
 
@@ -68,8 +68,8 @@ try:
     with open (MY_file,'r') as file:
         contents=file.read()
         print(contents)
-        # parse=int(contents)
-        # print(parse)  # this will throw and error invalid int
+        parse=int(contents)
+        print(parse)  # this will throw and error invalid int
 
 except(ValueError):
     print('Inavlid Data in file')
