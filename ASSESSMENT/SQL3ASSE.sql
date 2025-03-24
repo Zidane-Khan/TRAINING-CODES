@@ -35,7 +35,7 @@ insert into orders_trans  values (2, 1, 1000, 'Pending');
 insert into order_items_trans values (2,1, 1, 10,1000);
 update inventory_trans set quantity_in_stock=10 where product_id =1;
 
-update inventory_trans set quantity_in_stock=10 where product_id =3;
+update inventory_trans set quantity_in_stock=10 where product_id =999;
 
 
 rollback
