@@ -111,7 +111,6 @@ finally:
 
 class BankAccount:
     def __init__(self, balance=0):
-        # Initialize the balance to the given value, default is 0.
         self.balance = balance
 
     def deposit(self, amount):
