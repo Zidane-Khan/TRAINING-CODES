@@ -1,16 +1,38 @@
 Team1 = str(input(f"Enter {1} team name: "))
 print(f'Your team 1 is {Team1}')
+# Team2 = str(input(f"Enter {2} team name: "))
+# print(f'Your team 1 is {Team1}')
+
+# print("both team captains pease come to toss")
+# Heads=0
+# Tails=1
+# team1_toss_select={}
+# team2_toss_select={}
+# toss=input(f'enter heads or tails for {Team1} ')
+# toss2=input(f'enter heads or tails for {Team2} ')
+# for i in toss:
+#     if i=='Heads':
+#         team1_toss_select.update({Team1:'Heads'})
+
+#     else:
+#         team1_toss_select.update({Team1:'Tails'})
 
 No_Team_players = 4
 Members1 = {}
+Members2 = {}
 
 # Input player names and positions
 for i in range(No_Team_players):
     Member = input(f'Enter name of member no {i+1} for {Team1} Team: ')
     position = input(f'Enter {Member} playing choose between baller, batsman, or allrounder: ')
     Members1.update({Member: position})
-
 print(Members1)
+
+# for i in range(No_Team_players):
+#     Member = input(f'Enter name of member no {i+1} for {Team1} Team: ')
+#     position = input(f'Enter {Member} playing choose between baller, batsman, or allrounder: ')
+#     Members2.update({Member: position})
+# print(Members2)
 
 batsman = []
 # Find the batsmen
@@ -23,8 +45,20 @@ if len(batsman) < 2:
     print("Not enough batsmen! Exiting game.")
     exit()
 
+# batsman2 = []
+# # Find the batsmen
+# for player, position in Members2.items():
+#     if position.lower() == 'batsman':
+#         batsman2.append(player)
+
+# # Ensure at least 2 batsmen are present
+# if len(batsman2) < 2:
+#     print("Not enough batsmen! Exiting game.")
+#     exit()
+
 # Select first two batsmen as striker and non-striker
 striker, non_striker = batsman[0],batsman[1]
+# striker, non_striker = batsman2[0],batsman2[1]
 
 overs = 1
 balls_per_over = 6
@@ -35,7 +69,10 @@ score = 0
 # non_striker_score={}
 # striker_scores=0
 # non_striker_scores=0
+
 batsman_scores={player:0 for player in batsman}
+# batsman_scores2={player:0 for player in batsman2}
+
 for i in range(overs):
     print(f'Over {i+1} started')
 
@@ -104,9 +141,8 @@ for i in range(overs):
                     batsman_scores[striker]+=runs
                     print(batsman_scores)
                     print(f'{striker}* striker')
-        
 
-                elif runs == 1:
+                elif runs == 1 or  runs==3:
 
                     score += 1
                     batsman_scores[striker]+=runs
@@ -123,7 +159,7 @@ for i in range(overs):
 # Final score
 # 
 print(f'Final Score for {Team1} is {score}')
-
+# print(f'Final Score for {Team2} is {score}')
 
 
 
