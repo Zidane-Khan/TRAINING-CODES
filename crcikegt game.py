@@ -31,10 +31,11 @@ balls_per_over = 6
 score = 0
 
 # Simulate the balls and experience
-striker_score={}
-non_striker_score={}
-striker_scores=0
-non_striker_scores=0
+# striker_score={}
+# non_striker_score={}
+# striker_scores=0
+# non_striker_scores=0
+batsman_scores={player:0 for player in batsman}
 for i in range(overs):
     print(f'Over {i+1} started')
 
@@ -64,33 +65,55 @@ for i in range(overs):
             try:
                 runs = int(experience)
                 if runs == 6:
-                    print(f'{striker} hit a six!')
+                    print(f'{striker} hits a SIX!')
                     score += 6
-                    if striker:
-                        striker_score.update({striker:score})
-                        print('striker score',score_striker)
-                    elif non_striker:
-                         non_striker_score.update({non_striker:score})
-                         print('non-striker-svcore',non_score_striker)
+                    batsman_scores[striker]+=runs
+                    print(batsman_scores)
+                    print(f'{striker}* striker')
+
+                    # if striker:
+                    #     striker_scores+=6
+                    #     striker_score.update({striker:striker_scores})
+                    #     print(f'{striker} hit a six!')
+                    #     print('striker score',striker_score)
+                    # else:
+                    #      non_striker_scores+=6
+                    #      non_striker_score.update({non_striker:non_striker_scores})
+                    #      print(f'{non_striker} hit a six!')
+                    #      print('non-striker-svcore',non_striker_score)
                 elif runs == 4:
                     print(f'{striker} hit a four!')
                     score += 4
-                    if striker:
-                        score_striker.update({striker:score})
-                        print('striker score',score_striker)
-                    elif non_striker:
-                         non_score_striker.update({non_striker:score})
-                         print('non-striker-svcore',non_score_striker)
-                elif runs == 1:
-                    striker, non_striker = non_striker, striker
-                    score += 1
-                    print(f'{non_striker} is now on strike')
+                    batsman_scores[striker]+=runs
+                    print(batsman_scores)
+                    print(f'{striker}* striker')
+        
                     # if striker:
-                    score_striker.update({striker:score})
-                    print('striker score',score_striker)
-                    # elif non_striker:
-                    #      non_score_striker.update({non_striker:score})
-                    #      print('non-striker-svcore',non_score_striker)
+                    #     striker_scores+=4
+                    #     striker_score.update({striker:striker_scores})
+                    #     print(f'{striker} hit a six!')
+                    #     print('striker score',striker_score)
+                    # else:
+                    #      non_striker_scores+=4
+                    #      non_striker_score.update({non_striker:non_striker_scores})
+                    #      print(f'{non_striker} hit a six!')
+            
+                elif runs == 2:
+                    print(f'{striker} hit a four!')
+                    score += 2
+                    batsman_scores[striker]+=runs
+                    print(batsman_scores)
+                    print(f'{striker}* striker')
+        
+
+                elif runs == 1:
+
+                    score += 1
+                    batsman_scores[striker]+=runs
+                    print(batsman_scores)
+                    striker, non_striker = non_striker, striker
+                    print(f'{striker}* striker')
+    
                 else:
                     score += runs
                     print(f'Score: {score}')
@@ -98,9 +121,8 @@ for i in range(overs):
                 print("Invalid input, please enter a valid number or 'out'/'wide'.")
 
 # Final score
+# 
 print(f'Final Score for {Team1} is {score}')
-print('striker score',score_striker)
-print(non_score_striker)
 
 
 

@@ -4,21 +4,22 @@
 #      Expected Output: "a2b3c4"
 # b. Example Input: "abc"
 #      Expected Output: "abc" 
+def compress():
 
+    String1="aabbbcccc"
+    output=String1[0]
+    count=1
 
-String1="aabbbcccc"
-output=String1[0]
-count=1
+    for i in range(1,len(String1)):
+        if String1[i]==String1[i-1]:
+            count=count+1
+        else:
+            output+=str(count)+String1[i]
+            count=1
+    output+=str(count)
+    print(output)
 
-for i in range(1,len(String1)):
-    if String1[i]==String1[i-1]:
-        count=count+1
-    else:
-        output+=str(count)+String1[i]
-        count=1
-output+=str(count)
-print(output)
-
+compress()
 
 # 2. Write a Python function that finds the length of the longest substring without repeating characters in a given string.
 # a. Example Input: "abcabcbb"
@@ -152,3 +153,6 @@ with open (MY_file,'r') as appe_file:
 
 
 # output -zidanej723@gmail.commergemerge
+
+
+
