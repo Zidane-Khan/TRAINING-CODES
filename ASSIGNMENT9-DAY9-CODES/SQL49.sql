@@ -1,5 +1,6 @@
 # 49.	Implement a transaction in SQL to update customer information and log the changes in an audit table for tracking purposes.
 
+
 CREATE TABLE trigger_table (
     name VARCHAR(10)
 );

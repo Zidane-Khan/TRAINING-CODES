@@ -1,0 +1,1 @@
+create table (train_id, train_name, train_type, total_seats, available_seats, status) 

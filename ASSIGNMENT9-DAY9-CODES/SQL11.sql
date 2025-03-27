@@ -4,6 +4,6 @@
 select* from users;
 select * from orders;
 ALTER TABLE orders
-RENAME COLUMN id to de;
+RENAME COLUMN de to zn;
 
-select * from users inner join orders on users.id=orders.id;
+select * from users inner join orders on users.id=orders.zn;

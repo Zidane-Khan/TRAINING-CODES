@@ -4,7 +4,8 @@
 
 select customer.fname , customer.mobileno, 
 account.acnumber from customer inner join account
- on customer.custid = account.custid where aod>  ;
+ on customer.custid = account.custid  where day(aod;
+
  
  select * from account
 
