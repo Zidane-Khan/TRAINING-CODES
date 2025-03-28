@@ -67,7 +67,7 @@ print(f"Team 1 has chosen: {team1_choosen}")
 print(f"Team 2 has chosen: {team2_choosen}")
 
 
-No_Team_players = 5
+No_Team_players = 4
 Members1 = {}
 Members2 = {}
 
@@ -464,122 +464,325 @@ else:
 
 if score == score1:
     print("It's a draw! A Super Over will decide the winner.")
-    
+
+    if team1_choosen[0]=='field':
+
+        super_batsman_scores={player:0 for player in batsman}    
     # Super Over: Team 1's Super Over
-    print(f"\nSuper Over! {Team1} will bat first.")
-    
+        print(f"\nSuper Over! {Team1} will bat first.")
+        
 
-    super_over_score = 0
-    super_over_batsman = batsman[:2]  
-    super_over_baller = baller[:1]  
-    super_over_striker, super_over_non_striker = super_over_batsman[0], super_over_batsman[1]
-    
+        super_over_score = 0
+        super_over_batsman = batsman[:2]  
 
-    for i in range(1):  
-        print(f"\nSuper Over: {Team1} Batting")
-        print(f'{super_over_striker}* is now on strike')
+        super_over_baller1 = baller2[:1]  
+        super_over_striker, super_over_non_striker = super_over_batsman[0], super_over_batsman[1]
+        
 
-        on_over_baller1 = choose_bowler(super_over_baller)
-        print(f'{on_over_baller1} is now balling')
+        for i in range(1):  
+            print(f"\nSuper Over: {Team1} Batting")
+            print(f'{super_over_striker}* is now on strike')
 
-        for j in range(balls_per_over):
-            print(f'{j+1} ball of the over')
-            experience = input(f'Enter the experience for {super_over_striker} on this ball: ')
+            on_over_baller1 = choose_bowler(super_over_baller1)
+            print(f'{on_over_baller1} is now balling')
 
-            if experience.lower() == 'out':
-                print(f'{super_over_striker} is out!')
-                super_over_batsman.remove(super_over_striker)
-                if len(super_over_batsman) >= 1:
-                    super_over_striker = super_over_batsman[0]
-                    print(f'{super_over_striker}* is now on strike')
-                    super_over_non_striker = super_over_batsman[1] if len(super_over_batsman) > 1 else None
+            for j in range(balls_per_over):
+                print(f'{j+1} ball of the over')
+                experience = input(f'Enter the experience for {super_over_striker} on this ball: ')
+
+                if experience.lower() == 'out':
+                    print(f'{super_over_striker} is out!')
+                    super_over_batsman.remove(super_over_striker)
+                    if len(super_over_batsman) >= 1:
+                        super_over_striker = super_over_batsman[0]
+                        print(f'{super_over_striker}* is now on strike')
+                        super_over_non_striker = super_over_batsman[1] if len(super_over_batsman) > 1 else None
+                    else:
+                        print("No more batsmen left, super over ends.")
+                        break  
+                elif experience.lower() == 'wide':
+                    super_over_score += 1
+                    print(f"Wide ball, no change in striker, super over score: {super_over_score}")
                 else:
-                    print("No more batsmen left, super over ends.")
-                    break  
-            elif experience.lower() == 'wide':
-                super_over_score += 1
-                print(f"Wide ball, no change in striker, super over score: {super_over_score}")
-            else:
-                try:
-                    runs = int(experience)
-                    super_over_score += runs
-                    print(f'{super_over_striker} scored {runs} runs!')
-                    print(f'Super Over score: {super_over_score}')
-                    if runs == 1 or runs == 3:
-                        super_over_striker, super_over_non_striker = super_over_non_striker, super_over_striker
-                        print(f'{super_over_striker}* striker')
+                    try:
+                        runs = int(experience)
+                        if runs == 6:
+                            print(f'{super_over_striker} hits a SIX!')
+                            super_over_score += 6
+                            super_batsman_scores[super_over_striker]+=runs
+                            print(super_over_batsman)
+                            print(f'{super_over_striker}* striker')
 
-                except ValueError:
-                    print("Invalid input, please enter a valid number or 'out'/'wide'.")
+                
+                        elif runs == 4:
+                            print(f'{super_over_striker} hit a four!')
+                            super_over_score += 4
+                            super_batsman_scores[super_over_striker]+=runs
+                            print(super_over_batsman)
+                            print(f'{super_over_striker}* striker')
+                
+                        elif runs == 2:
+                            print(f'{super_over_striker} hit a four!')
+                            super_over_score += 2
+                            super_batsman_scores[super_over_striker]+=runs
+                            print(super_over_batsman)
+                            print(f'{super_over_striker}* striker')
 
-       
-        super_over_baller.append(super_over_baller.pop(0))
-    print(f"\n{Team1}'s Super Over score: {super_over_score}")
+                        elif runs == 1 or  runs==3:
 
-   
-    print(f"\nSuper Over! {Team2} will bat next.")
+                            super_over_score += 1
+                            super_batsman_scores[super_over_striker]+=runs
+                            print(super_over_batsman)
+                            super_over_striker, super_over_non_striker = super_over_non_striker, super_over_striker
+                            print(f'{super_over_striker}* striker')
+            
+                        else:
+                            super_over_score += runs
+                            print(f'Score: {super_over_score}')
+                    except ValueError:
+                        print("Invalid input, please enter a valid number or 'out'/'wide'.")
+        print(f"\n{Team1}'s Super Over score: {super_over_score}")
 
-
-    super_over_score2 = 0
-    super_over_batsman2 = batsman2[:2]  
-    super_over_baller2 = baller2[:1]  
-    super_over_striker2, super_over_non_striker2 = super_over_batsman2[0], super_over_batsman2[1]
     
+        print(f"\nSuper Over! {Team2} will bat next.")
 
-    for i in range(1): 
-        print(f"\nSuper Over: {Team2} Batting")
-        print(f'{super_over_striker2}* is now on strike')
+        super_batsman_scores2={player:0 for player in batsman2}
+        super_over_score2 = 0
+        super_over_batsman2 = batsman2[:2]  
+        super_over_baller2 = baller[:1]  
+        super_over_striker2, super_over_non_striker2 = super_over_batsman2[0], super_over_batsman2[1]
+        
 
-        on_over_baller2 = choose_bowler(super_over_baller2)
-        print(f'{on_over_baller2} is now balling')
+        for i in range(1): 
+            print(f"\nSuper Over: {Team2} Batting")
+            print(f'{super_over_striker2}* is now on strike')
 
-        for j in range(balls_per_over):
-            print(f'{j+1} ball of the over')
-            experience = input(f'Enter the experience for {super_over_striker2} on this ball: ')
+            on_over_baller2 = choose_bowler(super_over_baller2)
+            print(f'{on_over_baller2} is now balling')
 
-            if experience.lower() == 'out':
-                print(f'{super_over_striker2} is out!')
-                super_over_batsman2.remove(super_over_striker2)
-                if len(super_over_batsman2) >= 1:
-                    super_over_striker2 = super_over_batsman2[0]
-                    print(f'{super_over_striker2}* is now on strike')
-                    super_over_non_striker2 = super_over_batsman2[1] if len(super_over_batsman2) > 1 else None
+            for j in range(balls_per_over):
+                print(f'{j+1} ball of the over')
+                experience = input(f'Enter the experience for {super_over_striker2} on this ball: ')
+
+                if experience.lower() == 'out':
+                    print(f'{super_over_striker2} is out!')
+                    super_over_batsman2.remove(super_over_striker2)
+                    if len(super_over_batsman2) >= 1:
+                        super_over_striker2 = super_over_batsman2[0]
+                        print(f'{super_over_striker2}* is now on strike')
+                        super_over_non_striker2 = super_over_batsman2[1] if len(super_over_batsman2) > 1 else None
+                    else:
+                        print("No more batsmen left, super over ends.")
+                        break  
+
+                elif experience.lower() == 'wide':
+                    super_over_score += 1
+                    print(f"Wide ball, no change in striker, super over score: {super_over_score2}")
                 else:
-                    print("No more batsmen left, super over ends.")
-                    break  
+                    try:
+                        runs = int(experience)
+                        if runs == 6:
+                            print(f'{super_over_striker2} hits a SIX!')
+                            score += 6
+                            super_batsman_scores2[super_over_striker2]+=runs
+                            print(super_over_batsman2)
+                            print(f'{super_over_striker2}* striker')
 
-            elif experience.lower() == 'wide':
-                super_over_score2 += 1
-                print(f"Wide ball, no change in striker, super over score: {super_over_score2}")
-            else:
-                try:
-                    runs = int(experience)
-                    super_over_score2 += runs
-                    print(f'{super_over_striker2} scored {runs} runs!')
-                    print(f'Super Over score: {super_over_score2}')
-                    if runs == 1 or runs == 3:
-                        super_over_striker2, super_over_non_striker2 = super_over_non_striker2, super_over_striker2
-                        print(f'{super_over_striker2}* striker')
+                
+                        elif runs == 4:
+                            print(f'{super_over_striker2} hit a four!')
+                            score += 4
+                            super_batsman_scores2[super_over_striker2]+=run
+                            print(super_over_batsman2)
+                            print(f'{super_over_striker2}* striker')
+                
+                        elif runs == 2:
+                            print(f'{super_over_striker2} hit a four!')
+                            score += 2
+                            super_batsman_scores2[super_over_striker2]+=runs
+                            print(super_over_batsman2)
+                            print(f'{super_over_striker2}* striker')
 
-                except ValueError:
-                    print("Invalid input, please enter a valid number or 'out'/'wide'.")
+                        elif runs == 1 or  runs==3:
 
-     
-        super_over_baller2.append(super_over_baller2.pop(0))
-    print(f"\n{Team2}'s Super Over score: {super_over_score2}")
+                            score += 1
+                            super_batsman_scores2[super_over_striker2]+=runs
+                            print(super_over_batsman2)
+                            super_over_striker2, super_over_non_striker2 = super_over_non_striker2, super_over_striker2
+                            print(f'{super_over_striker2}* striker')
+            
+                        else:
+                            super_over_score += runs
+                            print(f'Score: {super_over_score2}')
+                    except ValueError:
+                        print("Invalid input, please enter a valid number or 'out'/'wide'.")
+
+        # Final decision on the winner after super over
+        if super_over_score > super_over_score2:
+            print(f'\nCongratulations {Team1} wins the Super Over with {super_over_score} runs!')
+        elif super_over_score2 > super_over_score:
+            print(f'\nCongratulations {Team2} wins the Super Over with {super_over_score2} runs!')
+        else:
+            print(f'\nThe Super Over ends in a draw! Both teams scored {super_over_score}!')
+    
+    if team2_choosen[0]=='field':
+
+        print(f"\nSuper Over! {Team2} will bat next.")
+
+        super_batsman_scores2={player:0 for player in batsman2}
+        super_over_score2 = 0
+        super_over_batsman2 = batsman2[:2]  
+        super_over_baller2 = baller[:1]  
+        super_over_striker2, super_over_non_striker2 = super_over_batsman2[0], super_over_batsman2[1]
+        
+
+        for i in range(1): 
+            print(f"\nSuper Over: {Team2} Batting")
+            print(f'{super_over_striker2}* is now on strike')
+
+            on_over_baller2 = choose_bowler(super_over_baller2)
+            print(f'{on_over_baller2} is now balling')
+
+            for j in range(balls_per_over):
+                print(f'{j+1} ball of the over')
+                experience = input(f'Enter the experience for {super_over_striker2} on this ball: ')
+
+                if experience.lower() == 'out':
+                    print(f'{super_over_striker2} is out!')
+                    super_over_batsman2.remove(super_over_striker2)
+                    if len(super_over_batsman2) >= 1:
+                        super_over_striker2 = super_over_batsman2[0]
+                        print(f'{super_over_striker2}* is now on strike')
+                        super_over_non_striker2 = super_over_batsman2[1] if len(super_over_batsman2) > 1 else None
+                    else:
+                        print("No more batsmen left, super over ends.")
+                        break  
+
+                elif experience.lower() == 'wide':
+                    super_over_score += 1
+                    print(f"Wide ball, no change in striker, super over score: {super_over_score2}")
+                else:
+                    try:
+                        runs = int(experience)
+                        if runs == 6:
+                            print(f'{super_over_striker2} hits a SIX!')
+                            score += 6
+                            super_batsman_scores2[super_over_striker2]+=runs
+                            print(super_over_batsman2)
+                            print(f'{super_over_striker2}* striker')
+
+                
+                        elif runs == 4:
+                            print(f'{super_over_striker2} hit a four!')
+                            score += 4
+                            super_batsman_scores2[super_over_striker2]+=run
+                            print(super_over_batsman2)
+                            print(f'{super_over_striker2}* striker')
+                
+                        elif runs == 2:
+                            print(f'{super_over_striker2} hit a four!')
+                            score += 2
+                            super_batsman_scores2[super_over_striker2]+=runs
+                            print(super_over_batsman2)
+                            print(f'{super_over_striker2}* striker')
+
+                        elif runs == 1 or  runs==3:
+
+                            score += 1
+                            super_batsman_scores2[super_over_striker2]+=runs
+                            print(super_over_batsman2)
+                            super_over_striker2, super_over_non_striker2 = super_over_non_striker2, super_over_striker2
+                            print(f'{super_over_striker2}* striker')
+            
+                        else:
+                            super_over_score += runs
+                            print(f'Score: {super_over_score2}')
+                    except ValueError:
+                        print("Invalid input, please enter a valid number or 'out'/'wide'.")
+
+        super_batsman_scores={player:0 for player in batsman}    
+    # Super Over: Team 1's Super Over
+        print(f"\nSuper Over! {Team1} will bat first.")
+        
+
+        super_over_score = 0
+        super_over_batsman = batsman[:2]  
+
+        super_over_baller1 = baller2[:1]  
+        super_over_striker, super_over_non_striker = super_over_batsman[0], super_over_batsman[1]
+        
+
+        for i in range(1):  
+            print(f"\nSuper Over: {Team1} Batting")
+            print(f'{super_over_striker}* is now on strike')
+
+            on_over_baller1 = choose_bowler(super_over_baller1)
+            print(f'{on_over_baller1} is now balling')
+
+            for j in range(balls_per_over):
+                print(f'{j+1} ball of the over')
+                experience = input(f'Enter the experience for {super_over_striker} on this ball: ')
+
+                if experience.lower() == 'out':
+                    print(f'{super_over_striker} is out!')
+                    super_over_batsman.remove(super_over_striker)
+                    if len(super_over_batsman) >= 1:
+                        super_over_striker = super_over_batsman[0]
+                        print(f'{super_over_striker}* is now on strike')
+                        super_over_non_striker = super_over_batsman[1] if len(super_over_batsman) > 1 else None
+                    else:
+                        print("No more batsmen left, super over ends.")
+                        break  
+                elif experience.lower() == 'wide':
+                    super_over_score += 1
+                    print(f"Wide ball, no change in striker, super over score: {super_over_score}")
+                else:
+                    try:
+                        runs = int(experience)
+                        if runs == 6:
+                            print(f'{super_over_striker} hits a SIX!')
+                            super_over_score += 6
+                            super_batsman_scores[super_over_striker]+=runs
+                            print(super_over_batsman)
+                            print(f'{super_over_striker}* striker')
+
+                
+                        elif runs == 4:
+                            print(f'{super_over_striker} hit a four!')
+                            super_over_score += 4
+                            super_batsman_scores[super_over_striker]+=runs
+                            print(super_over_batsman)
+                            print(f'{super_over_striker}* striker')
+                
+                        elif runs == 2:
+                            print(f'{super_over_striker} hit a four!')
+                            super_over_score += 2
+                            super_batsman_scores[super_over_striker]+=runs
+                            print(super_over_batsman)
+                            print(f'{super_over_striker}* striker')
+
+                        elif runs == 1 or  runs==3:
+
+                            super_over_score += 1
+                            super_batsman_scores[super_over_striker]+=runs
+                            print(super_over_batsman)
+                            super_over_striker, super_over_non_striker = super_over_non_striker, super_over_striker
+                            print(f'{super_over_striker}* striker')
+            
+                        else:
+                            super_over_score += runs
+                            print(f'Score: {super_over_score}')
+                    except ValueError:
+                        print("Invalid input, please enter a valid number or 'out'/'wide'.")
+        print(f"\n{Team1}'s Super Over score: {super_over_score}")
 
     # Final decision on the winner after super over
-    if super_over_score > super_over_score2:
-        print(f'\nCongratulations {Team1} wins the Super Over with {super_over_score} runs!')
-    elif super_over_score2 > super_over_score:
-        print(f'\nCongratulations {Team2} wins the Super Over with {super_over_score2} runs!')
-    else:
-        print(f'\nThe Super Over ends in a draw! Both teams scored {super_over_score}!')
-else:
+        if super_over_score > super_over_score2:
+            print(f'\nCongratulations {Team1} wins the Super Over with {super_over_score} runs!')
+        elif super_over_score2 > super_over_score:
+            print(f'\nCongratulations {Team2} wins the Super Over with {super_over_score2} runs!')
+        else:
+            print(f'\nThe Super Over ends in a draw! Both teams scored {super_over_score}!')
+
+    
    
-    if score > score1:
-        print(f'Congratulations {Team1} wins with {score} runs!')
-    elif score1 > score:
-        print(f'Congratulations {Team2} wins with {score1} runs!')
-    else:
-        print(f'The match is a draw with both teams scoring {score}!')

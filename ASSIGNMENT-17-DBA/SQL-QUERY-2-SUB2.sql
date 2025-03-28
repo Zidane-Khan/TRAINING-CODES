@@ -54,7 +54,13 @@ select * from seats;
  select * from bookings;
  select bookings.seat_number, bookings.journey_date, bookings.class,trains.available_seats from
  bookings inner join trains on trains.train_id=bookings.train_id where bookings.class='Second-C' 
- and bookings.journey_date='2025-04-26'
+ and bookings.journey_date='2025-04-26';
+ 
+ 
+ -- Display all trains running late (by checking real-time tracking data).
+ select * from train_schedule;
+ select trains.train_id, trains.train_name from trains 
+ inner join train_schedule on trains.train_id=train_schedule.train_id where  train_schedule.frequency='Occasional'
  
  
 

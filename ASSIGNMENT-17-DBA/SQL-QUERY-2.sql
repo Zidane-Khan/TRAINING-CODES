@@ -1,3 +1,7 @@
+
+-- 2. Query Operations: Retrieving and Manipulating Data
+-- Write MySQL queries to perform the following operations:
+
 # Adding new records:
 # Insert a new train schedule into the database.
 # Add a new passenger and book a ticket for a specific train.
@@ -7,10 +11,8 @@
 # Insert a new train schedule into the database.
 insert into trains values(1,'Rajdhani Express',
 'Super fast',200,500,'Available');
-
 insert into Stations values(10,'Jaipur Junction','Jaipur','Rajasthan','West');
 insert into Stations values(11,'Mumbai Junction','Mumbai','Maharashtra','South');
-
 insert into train_schedule values(101,1,10,11,'2025-04-26 11:00:00',
 '2025-04-26 10:00:','01:00:00','Every day');
 #----------------------------------------------------------------------------------------------------
@@ -35,7 +37,7 @@ insert into Passengers values (1002 , 'Cm punk',
 #----------------------------------------------------------------------------------------------------
 
 -- Update seat availability when a new booking is made.
--- insert into seats values (1,1,'A110','First-C','YES');
-
+insert into seats values (1,1,'A110','First-C','YES');
+select * from seats;
 
 
