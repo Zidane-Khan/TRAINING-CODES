@@ -25,7 +25,7 @@ compress()
 # a. Example Input: "abcabcbb"
 #  Expected Output: 3 (The longest substring is "abc")
 
-S="kartik"
+S="abcabcbb"
 S1=list(S)
 S2=[]
 
